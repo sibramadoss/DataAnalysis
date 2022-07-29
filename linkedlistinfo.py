@@ -18,13 +18,23 @@ class LinkedList:
             itr = itr.next
         print(llstr)
 
+    def fprinty(self):
+        if self.head is None:
+            print('No list is available')
+            return
+        itr = self.head
+        llstr = ''
+        while itr:
+            llstr += str(itr.data) + '--> ' if itr.next else str(itr.data)
+            itr = itr.next
+        print(llstr)
+
     def get_length(self):
         count = 0
         itr = self.head
         while itr:
             count+=1
             itr = itr.next
-
         return count
 
     def insert_at_beginning(self, data):
@@ -87,15 +97,16 @@ class LinkedList:
 
 if __name__ == '__main__':
     ll = LinkedList()
+    ll.fprinty()
     ll.insert_at_end("seven")
     ll.insert_values(["banana","mango","grapes","orange"])
     ll.insert_at(1,"blueberry")
     ll.remove_at(2)
     print(ll.get_length())
-    ll.printy()
+    ll.fprinty()
 
 
     l2 = LinkedList()
     l2.insert_values([45,7,12,567,99])
     l2.insert_at_end(67)
-    l2.printy()
+    #l2.printy()

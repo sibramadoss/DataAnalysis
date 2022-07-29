@@ -14,7 +14,6 @@ class B(object):
         self.data = data
         #self.data = 7 locks in value and takes precedent over input arguments
 
-
     def method_a(self, foo):
         print (self.y + ' ' + self.x + ' ' + foo + ' ' + str(self.data))
 
@@ -35,6 +34,7 @@ if __name__ == '__main__':
     b.method_a('buddy!')
     b.summing(60)
     b.subtracting(12)
+    #print(B.x*A(100).data) #throws back hello 100 times
 
 
 # https://www.tutorialspoint.com/What-is-difference-between-self-and-init-methods-in-python-Class
