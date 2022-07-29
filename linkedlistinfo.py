@@ -14,7 +14,7 @@ class LinkedList:
         itr = self.head
         llstr = ''
         while itr:
-            llstr += str(itr.data)+' --> ' if itr.next else str(itr.data)
+            llstr += str(itr.data)+'--> ' if itr.next else str(itr.data)
             itr = itr.next
         print(llstr)
 
@@ -27,7 +27,7 @@ class LinkedList:
 
         return count
 
-    def insert_at_begining(self, data):
+    def insert_at_beginning(self, data):
         node = Node(data, self.head)
         self.head = node
 
@@ -81,18 +81,21 @@ class LinkedList:
             count+=1
 
     def insert_values(self, data_list):
-        self.head = None
         for data in data_list:
             self.insert_at_end(data)
 
 
 if __name__ == '__main__':
     ll = LinkedList()
+    ll.insert_at_end("seven")
     ll.insert_values(["banana","mango","grapes","orange"])
     ll.insert_at(1,"blueberry")
     ll.remove_at(2)
+    print(ll.get_length())
     ll.printy()
 
-    ll.insert_values([45,7,12,567,99])
-    ll.insert_at_end(67)
-    ll.printy()
+
+    l2 = LinkedList()
+    l2.insert_values([45,7,12,567,99])
+    l2.insert_at_end(67)
+    l2.printy()
