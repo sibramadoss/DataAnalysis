@@ -61,12 +61,23 @@ while len(SolutionArr) < 101:
         arr711.remove((tempMin_711))
 #print(SolutionArr)
 
-#14 --> 13 
+
 red = [0, 2, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 20]
+
+#I need to compare index x to index x+5
+#len(red) - 5 will put me at 5 places before my list ends
+#that means I will have 1 --> len(red) - 5 numbers or up to 0 --> len(red) - 6 index
+#I need the indexes so I need 0 --> len(red) - 6 indexes
+#len(red) - 5 > len(red) - 6
+#range function gives you from 0 to x-1
+#Im working with indices so I need 0 --> len(red)-6
+#so range will be from 0 --> (len(red) - 5) - 1
+
+
 print(len(red))
 print(range(0,9))
 
-for index in range(0,len(red) - 5):
+for index in range(0, len(red) - 5):
     if red[index] != red[index + 5] - 5:
         continue
     elif red[index] == red[index + 5] - 5:
