@@ -61,13 +61,7 @@ while len(SolutionArr) < 101:
         arr711.remove((tempMin_711))
 #print(SolutionArr)
 
-
 red = [0, 2, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 20]
-
-
-print(len(red) - 7)
-print(range(0,7))
-
 
 #I need to compare index x to index x+5
 #len(red) - 5 will put me at 5 places before my list ends
