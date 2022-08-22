@@ -88,14 +88,8 @@ if __name__ == '__main__':
     # print("UK is in the list? ", country_tree.search("UK"))
     # print("Sweden is in the list? ", country_tree.search("Sweden"))
 
-    numbers_tree = BinarySearchTreeNode(12)
-    numbers_tree.add_child(17)
-    numbers_tree.add_child(4)
-    numbers_tree.add_child(1)
-    numbers_tree.add_child(20)
-    numbers_tree.add_child(9)
-    numbers_tree.add_child(23)
-
-    #numbers_tree.build_tree([17, 4, 1, 20, 9, 23, 18, 34])
+    numbers_tree = build_tree([17, 4, 1, 20, 9, 23, 18, 34])
 
     print(numbers_tree.in_order_traversal())
+    print(numbers_tree.pot())
+    print(numbers_tree.prot())

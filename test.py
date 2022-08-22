@@ -1,6 +1,7 @@
 class A(object):
-    def __init__(self, data = None):
+    def __init__(self, data = None, x = None):
         self.data = data
+        self.x = 7
 
     def method_a(self, foo):
         print(str(self.data) + ' ' + foo)

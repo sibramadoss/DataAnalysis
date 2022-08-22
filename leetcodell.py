@@ -4,7 +4,7 @@ from requests import head
 
 itr = head
 
-count = 0
+count = 1
 while itr.next:
     count += 1
     itr = itr.next
@@ -16,8 +16,7 @@ if count == 0:
 
 itr = head
 
-index = 0
-
+index = 1
 while itr.next:
     if count - n == 0:
         return head.next
