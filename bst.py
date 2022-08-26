@@ -6,7 +6,7 @@ class BinarySearchTreeNode:
 
     def add_child(self, data):
         if data == self.data:
-            return # node already exist
+            return # node already exist   
 
         if data < self.data:
             if self.left:
@@ -73,6 +73,43 @@ class BinarySearchTreeNode:
         
         return elements
 
+    
+    def find_max(self):
+        if not self.right:
+            return self.data
+
+        if self.right:
+            return self.right.find_max()
+    
+    def find_min(self):
+        if not self.left:
+            return self.data
+        
+        if self.left:
+            return self.left.find_min()
+    
+    def deletey(self,val): 
+        if val < self.data:
+            if self.left:
+                self.left = self.left.deletey(val)
+        elif val > self.data:
+            if self.right:
+                self.right = self.right.deletey(val)
+        else:
+            if self.left is None and self.right is None:
+                return None
+            if self.left is None:
+                return self.right
+            if self.right is None:
+                return self.left
+        
+            min_val = self.right.find_min()
+            self.data = min_val
+            self.right = self.right.deletey(min_val)
+        
+        return self
+    
+
 def build_tree(elements):
     root = BinarySearchTreeNode(elements[0])
 
@@ -93,3 +130,8 @@ if __name__ == '__main__':
     print(numbers_tree.in_order_traversal())
     print(numbers_tree.pot())
     print(numbers_tree.prot())
+
+    sret = build_tree([4,1,5])
+    sret.deletey(1)
+    print(sret.in_order_traversal())
+ 

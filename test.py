@@ -1,5 +1,5 @@
 class A(object):
-    def __init__(self, data = None, x = None):
+    def __init__(self, data = 0, x = None):
         self.data = data
         self.x = 7
 
