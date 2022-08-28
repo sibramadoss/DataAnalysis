@@ -1,1 +1,0 @@
-    b.subtracting(12)

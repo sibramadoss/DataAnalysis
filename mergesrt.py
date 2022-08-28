@@ -9,8 +9,7 @@ def mrge(array):
 
         # merge
 
-        i , j = 0 , 0
-        k = 0
+        i,j,k = 0,0,0
 
         while i < len(la) and j<len(ra):
             if la[i] < ra[j]:
