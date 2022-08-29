@@ -18,3 +18,7 @@ print(d)
 d[2].append('rev')
 
 print(d)
+
+rey = 'asev'
+
+print(rey[0:2])
