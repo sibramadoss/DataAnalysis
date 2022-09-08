@@ -1,7 +1,7 @@
 class A(object):
     def __init__(self, data = 0, x = None):
         self.data = data
-        self.x = 7
+        self.x = None
 
     def method_a(self, foo):
         print(str(self.data) + ' ' + foo)
@@ -9,7 +9,7 @@ class A(object):
 class B(object):
     x = 'hello'
 
-    def __init__(self, data):
+    def __init__(self, data = 7):
         self.x = None
         self.y = None
         self.data = data
@@ -24,7 +24,7 @@ class B(object):
         print (self.y + ' ' + self.x + ' ' + ' ' + str(self.data))
 
     def summing(self, data2):
-        print(self.data + data2)
+        print('summing:' + str(self.data + data2))
 
     def subtracting(self, inp):
         print(self.x + ' '+ str(inp))
@@ -36,10 +36,12 @@ class B(object):
 if __name__ == '__main__':
     a = A(100)
     a.method_a('sailor!')
+    # try a = A()
+    # if we dont initialize A with anything, the initial value is set to the default value in the arguments
 
 
     print(B.x)
-    b = B(57)
+    b = B(10)
     b.method_a('buddy!')
     b.summing(60)
     b.subtracting(12)
