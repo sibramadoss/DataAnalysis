@@ -5,7 +5,7 @@ module dff (
 );
 
 always_ff @(posedge clk) begin
-    q <= d    //blocking assignment
+    q <= din;   //blocking assignment
 end
 
 endmodule
