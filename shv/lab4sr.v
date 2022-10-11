@@ -4,8 +4,8 @@ module dff (
     output logic q
 );
 
-always_ff @(posedge clk) begin
-    q <= din;   //blocking assignment
-end
+    always_ff @(posedge clk) begin
+        q <= din;   //blocking assignment
+    end
 
 endmodule

@@ -3,11 +3,12 @@ module sword_fsm (
     output logic v
 );
 
-wire s12;
-assign s12 = (sw | v) & ~reset;
-dff(clk, s12, v);
-    
+    wire s12;
+    assign s12 = (sw | v) & ~reset;
+    dff(clk, s12, v);
+
 endmodule
+
 
 
 
