@@ -4,10 +4,11 @@ module sword_fsm (
 );
 
     wire s12;
-    assign s12 = (sw | v) & ~reset;
+    assign s12 = ((sw | v) & ~reset) | (s12 & ~reset);
     dff(clk, s12, v);
 
 endmodule
+
 
 
 
