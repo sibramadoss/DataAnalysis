@@ -16,7 +16,7 @@ module room_fsm (
     dff(clk, s21, s2);
 
     wire s31;
-    assign s31 = (s2 & w & ~reset) | (s31 & ~reset) | (~reset & ~n & ~s & ~e & ~w & s31) | (s31 & n & ~reset) | (s31 & s & ~reset) | (s31 & w & ~reset)  | (s31 & w & ~reset) | (s31 & n & w & ~reset) | (s01 & s & w & ~reset) | (s31 & n & e & ~reset) | (s31 & s & e & ~reset);
+    assign s31 = (s2 & w & ~reset) | (s31 & ~reset) | (~reset & ~n & ~s & ~e & ~w & s31) | (s31 & n & ~reset) | (s31 & s & ~reset) | (s31 & w & ~reset) | (s31 & n & w & ~reset) | (s01 & s & w & ~reset) | (s31 & n & e & ~reset) | (s31 & s & e & ~reset);
     assign sw = s3;
     dff(clk, s31, s3);
 
