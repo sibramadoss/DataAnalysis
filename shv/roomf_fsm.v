@@ -25,7 +25,7 @@ assign s05 = (~reset & s4 & ~v) | (s5 & ~reset);
 lab04_sr gg (clk, s05, s5);
 assign d = s5;
 
-assign s05 = (~reset & s4 & v) | (s6 & ~reset);
+assign s06 = (~reset & s4 & v) | (s6 & ~reset);
 lab04_sr vv (clk, s06, s6);
 assign win = s6;
 
