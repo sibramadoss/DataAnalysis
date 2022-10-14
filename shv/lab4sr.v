@@ -1,4 +1,4 @@
-module dff (
+module lab04_sr (
     input logic clk,
     input logic din,
     output logic q
