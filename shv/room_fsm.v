@@ -3,35 +3,34 @@ module room_fsm (
     output logic s6, win, s5, d, s4, s3, sw, s2, s1, s0
 );
 
-    wire s01;
-    assign s01 = (s1 & w & ~n & ~s & ~e & ~reset) | (reset) | (~reset & ~n & ~s & ~e & ~w & s0) | (s0 & n & ~reset) | (s0 & s & ~reset) | (s0 & w & ~reset) | (s0 & n & w & ~reset) | (s0 & s & w & ~reset) | (s0 & n & e & ~reset) | (s0 & s & e & ~reset);
-    lab04_sr(clk, s01, s0);
+wire s00, s01, s02, s03, s04, s05, s06;
 
-    wire s11;
-    assign s11 = (s0 & e & ~n & ~w & ~s & ~reset) | (s2 & n & ~e & ~w & ~s & ~reset) | (~reset & ~n & ~s & ~e & ~w & s1) | (s1 & n & ~s & ~e & ~w & ~reset) | (s1 & e & ~n & ~s & ~w & ~reset) | (s1 & n & w & ~e & ~s & ~reset) | (s1 & s & w & ~n & ~e & ~reset) | (s1 & n & e & ~w & ~s & ~reset) | (s1 & s & e & ~n & ~w & ~reset);
-    lab04_sr(clk, s11, s1);
+assign s00 = reset | ~reset & ((s1 & w & ~(n|s|e)) | (s0 & n & ~(s|e|w)) | (s0 & s & ~(n|e|w)) | (s0 & w & ~(s|e|n)) | (s0 & (n&e) & ~(s|w)) | (s0 & (s&e) & ~(n|w)) | (s0 & (n&w) & ~(s|e)) | (s0 & (s&w) & ~(n|e))) | (s0 & ~(n|s|e|w) & ~reset) ;
+lab04_sr cc (clk, s00, s0);
 
-    wire s21;
-    assign s21 = (s1 & s & ~n & ~w & ~e & ~reset) | (s3 & e & ~n & ~w & ~s  & ~reset) | (~reset & ~n & ~s & ~e & ~w & s2) | (s2 & n & w & ~s & ~e & ~reset) | (s2 & s & w & ~n & ~e & ~reset) | (s2 & n & e & ~w & ~s & ~reset) | (s2 & s & ~w & ~e & ~n & ~reset) | (s2 & ~s & ~w & e & ~n & ~reset);
-    lab04_sr(clk, s21, s2);
+assign s01 = ~reset & ((s0 & e & ~(n|s|w)) | (s2 & n & ~(e|s|w)) | (s1 & e & ~(n|s|w)) | (s1 & n & ~(e|s|w)) | (s1 & (s&e) & ~(w|n)) | (s1 & (n&e) & ~(s|w)) | (s1 & (n&w) & ~(e|s)) | (s1 & (s&w) & ~(e|n)) | (s1 & ~(n|e|s|w)));
+lab04_sr tt (clk, s01, s1); 
 
-    wire s31;
-    assign s31 = (s2 & w & ~n & ~s & ~e & ~reset) | (~reset & ~n & ~s & ~e & ~w & s3) | (s3 & n & ~e & ~w & ~s & ~reset) | (s3 & s & ~n & ~e & ~w & ~reset) | (s3 & w & ~n & ~e & ~s & ~reset) | (s3 & n & w & ~e & ~s & ~reset) | (s3 & s & w & ~e & ~n & ~reset) | (s3 & n & e & ~s & ~w & ~reset) | (s3 & s & e & ~n & ~w & ~reset);
-    assign sw = s3;
-    lab04_sr(clk, s31, s3);
+assign s02 = ~reset & ((s1 & s & ~(n|e|w)) | (s3 & e & ~(s|n|w)) | (s2 & e & ~(n|s|w)) | (s2 & (n&e) & ~(s|w)) | (s2 & (n&w) & ~(e|s)) | (s2 & (s&w) & ~(n|e)) | (s2 & s & ~(n|e|w)) | (s2 & ~(n|s|e|w)));
+lab04_sr rr (clk, s02, s2);
 
-    wire s41;
-    assign s41 = (s2 & s & e & ~n & ~w & ~reset & (v|~v)) | (~reset & ~n & ~s & ~e & ~w & s4) | (~reset & n & ~s & ~e & ~w & s4) | (~reset & ~n & s & ~e & ~w & s4) | (~reset & ~n & ~s & e & ~w & s4) | (~reset & ~n & ~s & ~e & w & s3) | (~reset & n & ~s & e & ~w & s4) | (~reset & n & ~s & ~e & w & s4) | (~reset & ~n & s & e & ~w & s4) | (~reset & ~n & s & ~e & w & s4);
-    lab04_sr(clk, s41, s4);
+assign s03 = ~reset & ((s2 & w & ~(n|e|s)) | (s3 & n & ~(e|s|w)) | (s3 & s & ~(e|n|w)) | (s3 & w & ~(e|s|n)) | (s3 & (n&w) & ~(e|s)) | (s3 & (s&w) & ~(n|e)) | (s3 & (n&e) & ~(s|w)) | (s3 & (s&e) & ~(n|w)) | (s3 & ~(n|s|e|w)));
+lab04_sr ss (clk, s03, s3);
+assign sw = s3;
 
-    wire s51;
-    assign s51 = (s4 & v & ~n & ~s & ~w & ~e & ~reset) | (s5 & ~n & ~s & ~w & ~e & ~reset & v) | (s5 & n & ~s & ~w & ~e & ~reset & v) | (s5 & ~n & s & ~w & ~e & ~reset & v) | (s5 & ~n & ~s & w & ~e & ~reset & v) | (s5 & ~n & ~s & ~w & e & ~reset & v) | (s5 & ~n & s & ~w & e & ~reset & v) | (s5 & n & ~s & ~w & e & ~reset & v)  (s5 & ~n & s & w & ~e & ~reset & v) | (s5 & n & ~s & w & ~e & ~reset & v);
-    assign win = s5;
-    lab04_sr(clk, s51, s5);
+assign s04 = (~reset & s2 & s & e);
+lab04_sr dd (clk, s04, s4);
 
-    wire s61;
-    assign s61 = (s4 & ~v & ~n & ~s & ~w & ~e & ~reset) | (s6 & ~n & ~s & ~w & ~e & ~reset & ~v) | (s6 & n & ~s & ~w & ~e & ~reset & ~v) | (s6 & ~n & s & ~w & ~e & ~reset & ~v) | (s6 & ~n & ~s & w & ~e & ~reset & ~v) | (s6 & ~n & ~s & ~w & e & ~reset & ~v) | (s6 & n & ~s & w & ~e & ~reset & ~v) | (s6 & n & ~s & ~w & e & ~reset & ~v) | (s6 & ~n & s & w & ~e & ~reset & ~v) | (s6 & ~n & s & ~w & e & ~reset & ~v);
-    assign d = s6;
-    lab04_sr(clk, s61, s6);
+assign s05 = (~reset & s4 & ~v) | (s5 & ~reset);
+lab04_sr gg (clk, s05, s5);
+assign d = s5;
+
+assign s06 = (~reset & s4 & v) | (s6 & ~reset);
+lab04_sr vv (clk, s06, s6);
+assign win = s6;
 
 endmodule
+
+
+
+

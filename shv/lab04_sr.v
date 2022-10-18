@@ -9,3 +9,4 @@ module lab04_sr (
     end
 
 endmodule
+

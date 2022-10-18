@@ -1,25 +1,19 @@
 module sword_fsm (
-    input logic clk, reset, sw,
+    input logic sw, reset, clk,
     output logic v
 );
-    wire s12;
-    assign s12 = ((sw | v) & ~reset) | (v & ~reset & ~sw);
-    dff(clk, s12, v);
+    
+    wire s00;
+    assign s00 = reset | (~reset & ~sw & s0);
+    lab04_sr ns (clk, s00, s0);
+
+    wire s01;
+    assign s01 = (~reset & sw & s0) | (~reset & s1);
+    lab04_sr hs (clk, s01, s1);
+    assign v = s1;
 
 endmodule
 
 
-module sword_fsm (
-    input logic clk, reset, sw,
-    output logic v
-);
-    wire s10, s11;
-    assign s10 = (reset) | (~reset & ~sw & s10);
-    dff(clk, s10, s11);
 
-    wire s12;
-    assign s12 = (sw & s11 & ~reset) | (~reset & s12) | (s12 & ~reset & ~sw);
-    dff(clk, s12, v);
-
-endmodule
 
