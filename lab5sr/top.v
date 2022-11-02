@@ -4,8 +4,8 @@ input logic [31:0] WD3,
 input logic WE3,
 input logic [31:0] SrcA,
 input logic [31:0] SrcB,
-output logic [2:0] ALUControl
-output logic [31:0] ALUResult
+output logic [2:0] ALUControl,
+output logic [31:0] ALUResult,
 output logic [31:0] RD1,
 output logic [31:0] RD2,
 output logic [31:0] prode
@@ -15,4 +15,8 @@ output logic [31:0] prode
     alu alu1 (SrcA, SrcB, ALUControl, ALUResult);
 
 endmodule
+
+
+
+
 

@@ -12,7 +12,7 @@ output logic [31:0] prode
     always_ff @ (posedge clk or negedge rst)
     begin
         if (!rst) begin 
-            for (int i = 0; i<32: i++) begin
+            for (int i = 0; i<32; i++) begin
                 rf_regs[i] <= i;
             end
         end
@@ -29,9 +29,10 @@ output logic [31:0] prode
         end
     end
 
-    assign prode = rf_regs[A3]
+    assign prode = rf_regs[A3];
 
 endmodule
+
 
 
 

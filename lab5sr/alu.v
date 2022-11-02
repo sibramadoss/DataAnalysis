@@ -1,10 +1,9 @@
 module ALU (
     input logic [31:0] SrcA,
     input logic [31:0] SrcB,
-    output logic [2:0] ALUControl
+    output logic [2:0] ALUControl,
     output logic [31:0] ALUResult
 );
-    
     always @ (*)
     begin
         case(ALUControl)
@@ -17,4 +16,6 @@ module ALU (
     end
 
 endmodule
+
+
 
