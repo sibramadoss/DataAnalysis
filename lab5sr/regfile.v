@@ -7,34 +7,27 @@ output logic [31:0] RD2,
 output logic [31:0] prode
 );
     
-    logic [31:0] rf_regs [31:0];
+logic [31:0] rf_regs[31:0];
+assign prode = rf_regs[1];
 
-    always_ff @ (posedge clk or negedge rst)
-    begin
-        if (!rst) begin 
-            for (int i = 0; i<32; i++) begin
-                rf_regs[i] <= i;
-            end
-        end
+always_ff@(posedge clk or negedge rst)
+begin
+	if (!rst) begin 
+		for (int i = 0; i<32; i++) begin
+			rf_regs[i] <= i;
+      end
+   end
 
-        else begin
-            if (WE3 == 1) begin
-                rf_regs[A3] <= WD3;
-            end
-        
-        else begin
-            RD1 <= rf_regs[A1];
-            RD2 <= rf_regs[A2];
-        end
-        end
-    end
+   else begin
+    RD1 <= rf_regs[A1];
+	RD2 <= rf_regs[A2];
+	if (WE3) begin
+			rf_regs[A3] <= WD3;
+      end
+   end
 
-    assign prode = rf_regs[A3];
-
+end
+	 
 endmodule
-
-
-
-
 
 
