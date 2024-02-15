@@ -1,24 +1,23 @@
-d = {
-    3 : ['seven'],
-    4 : ['red'],
-    5 : ['43'],
-}
+# d = {
+#     3 : ['seven'],
+#     4 : ['red'],
+#     5 : ['43'],
+# }
 
+# print(d)
 
-print(d)
+# d[2] = ['fprty']
 
-d[2] = ['fprty']
+# print(d)
 
-print(d)
+# d[2] = ['fourty']
 
-d[2] = ['fourty']
+# print(d)
 
-print(d)
+# d[2].append('rev')
 
-d[2].append('rev')
-
-print(d)
+# print(d)
 
 rey = 'asev'
 
-print(rey[0:2])
+print(rey[0:3:1])
