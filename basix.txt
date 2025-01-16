@@ -1,2 +1,4 @@
 --Hello world
-Hello World
+
+Update the new branch and see if you can pull to main from it
+Also deleted a line from the original text file
